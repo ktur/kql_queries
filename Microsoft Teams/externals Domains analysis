@@ -1,0 +1,6 @@
+CloudAppEvents
+| where ActionType == @"MessageSent"
+| extend MyArrary=split(AccountId,'@') 
+| extend Domain=MyArrary[1]
+| summarize count()by tostring(Domain)
+| sort by count_
